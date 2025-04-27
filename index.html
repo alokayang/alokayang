@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a.k.a/alok kayang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #64ffda;
+            --secondary-color: #7f5af0;
+            --accent-color: #2cb67d;
+            --dark-bg: #16161a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-primary: #fffffe;
+            --text-secondary: #94a1b2;
+            --gradient-1: linear-gradient(45deg, #64ffda, #7f5af0);
+            --gradient-2: linear-gradient(45deg, #2cb67d, #7f5af0);
+            --gradient-3: linear-gradient(45deg, #64ffda, #2cb67d);
+            --gradient-4: linear-gradient(45deg, #7f5af0, #2cb67d);
+            --shadow-1: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --shadow-2: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --glow-1: 0 0 20px rgba(100, 255, 218, 0.3);
+            --glow-2: 0 0 30px rgba(127, 90, 240, 0.3);
+            --glow-3: 0 0 40px rgba(44, 182, 125, 0.3);
+            --overlay-1: linear-gradient(45deg, rgba(100, 255, 218, 0.1), rgba(127, 90, 240, 0.1));
+            --overlay-2: linear-gradient(45deg, rgba(44, 182, 125, 0.1), rgba(127, 90, 240, 0.1));
+            --overlay-3: linear-gradient(45deg, rgba(100, 255, 218, 0.1), rgba(44, 182, 125, 0.1));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(22, 22, 26, 0.9) 0%, rgba(22, 22, 26, 0.6) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 8s ease infinite;
+            text-shadow: var(--glow-1);
+            transform: translateY(0);
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .logo:hover {
+            transform: translateY(-10px) scale(1.05);
+            text-shadow: var(--glow-2);
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-1);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-2);
+            text-shadow: var(--glow-1);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            text-shadow: var(--glow-1);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-1);
+            box-shadow: var(--glow-1);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            transform: translateX(-20px);
+            opacity: 0;
+            animation: slideIn 1s ease forwards;
+        }
+
+        .about-text p:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-1);
+            transform: translateX(20px);
+            opacity: 0;
+            animation: slideInRight 1s ease forwards 0.5s;
+        }
+
+        @keyframes slideInRight {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            opacity: 0.8;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover::before {
+            transform: scale(1.1);
+        }
+
+        /* Members Section */
+        .members {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, #1a1a1a 0%, var(--dark-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .members::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            opacity: 0.05;
+            z-index: 0;
+            filter: saturate(0.8) contrast(0.9);
+        }
+
+        .members::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-3);
+            opacity: 0.1;
+            z-index: 0;
+            animation: gradientShift 15s infinite alternate;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .member-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 30px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            box-shadow: var(--shadow-2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .member-card:nth-child(4) {
+            grid-column: 2;
+        }
+
+        .member-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: var(--gradient-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            box-shadow: var(--shadow-2), var(--glow-1);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(100, 255, 218, 0.1);
+            overflow: hidden;
+        }
+
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .member-card:hover .member-avatar {
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: var(--shadow-1), var(--glow-2);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        .member-card:hover .member-avatar img {
+            transform: scale(1.1);
+        }
+
+        .member-name {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 2;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: all 0.5s ease;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--glow-1);
+        }
+
+        .member-card:hover .member-name {
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--glow-2);
+        }
+
+        .member-role {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            font-style: italic;
+            font-weight: 500;
+            transition: all 0.5s ease;
+            opacity: 0.9;
+        }
+
+        .member-card:hover .member-role {
+            color: var(--primary-color);
+            text-shadow: var(--glow-1);
+            opacity: 1;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.6rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-links a:hover {
+            background: rgba(100, 255, 218, 0.1);
+            border-color: rgba(100, 255, 218, 0.2);
+            color: var(--primary-color);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: var(--glow-1);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .member-card:nth-child(4) {
+                grid-column: auto;
+            }
+
+            .now-playing {
+                left: 1rem;
+                right: 1rem;
+                bottom: 1rem;
+                width: auto;
+                max-width: none;
+            }
+
+            .now-playing-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .now-playing-controls {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 1rem;
+            }
+
+            .volume-control {
+                display: none;
+            }
+
+            .progress-bar {
+                bottom: -3px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .members-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .member-card {
+                padding: 2rem;
+            }
+
+            .member-avatar {
+                width: 150px;
+                height: 150px;
+            }
+
+            .member-name {
+                font-size: 1.8rem;
+            }
+
+            .now-playing {
+                padding: 1rem;
+            }
+
+            .now-playing-title {
+                font-size: 0.9rem;
+            }
+
+            .track-time {
+                font-size: 0.7rem;
+            }
+
+            .music-player {
+                bottom: 1rem;
+                left: 1rem;
+            }
+        }
+
+        /* Memories Section */
+        .memories {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memories::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            opacity: 0.05;
+            z-index: 0;
+            filter: saturate(0.8) contrast(0.9);
+        }
+
+        .memories::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-3);
+            opacity: 0.1;
+            z-index: 0;
+            animation: gradientShift 10s infinite alternate;
+        }
+
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            box-shadow: var(--shadow-2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-1), var(--glow-1);
+            border-color: rgba(100, 255, 218, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-3);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .memory-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .memory-image {
+            width: 100%;
+            height: 250px;
+            background: var(--gradient-3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay-3);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 2;
+        }
+
+        .memory-card:hover .memory-image::after {
+            opacity: 1;
+        }
+
+        .memory-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+        }
+
+        .memory-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .memory-card:hover .memory-title {
+            transform: translateX(5px);
+            color: var(--accent-color);
+            text-shadow: var(--glow-1);
+        }
+
+        .memory-date {
+            color: var(--accent-color);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .memory-card:hover .memory-date {
+            transform: translateX(5px);
+            text-shadow: var(--glow-1);
+        }
+
+        .memory-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            transition: all 0.3s ease;
+        }
+
+        .memory-card:hover .memory-description {
+            transform: translateX(5px);
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            opacity: 0.05;
+            z-index: 0;
+            filter: saturate(0.8) contrast(0.9);
+        }
+
+        footer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-4);
+            opacity: 0.1;
+            z-index: 0;
+            animation: gradientShift 15s infinite alternate;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            box-shadow: var(--shadow-2);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content:hover {
+            box-shadow: var(--shadow-1), var(--glow-1);
+            border-color: rgba(100, 255, 218, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--glow-1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.5s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: transparent;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            text-shadow: var(--glow-1);
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            color: var(--text-secondary);
+            font-size: 1.8rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            margin: 0 1rem;
+            position: relative;
+        }
+
+        .footer-social a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px) scale(1.1);
+            text-shadow: var(--glow-1);
+        }
+
+        .footer-social a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-3);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .footer-social a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient-1);
+            z-index: 1000;
+            transition: width 0.1s ease;
+            box-shadow: var(--glow-1);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: var(--shadow-2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-1);
+            text-shadow: var(--glow-1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 3rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Enhanced animations */
+        @keyframes gradientShift {
+            0% {
+                opacity: 0.05;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.1;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 0.05;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slowZoom {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+            100% {
+                transform: scale(1.05) rotate(1deg);
+            }
+        }
+
+        @keyframes slowPan {
+            0% {
+                background-position: 0% center;
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                background-position: 100% center;
+                transform: scale(1);
+            }
+        }
+
+        /* Cookie Consent Popup */
+        .cookie-consent {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(22, 22, 26, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-1), var(--glow-1);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cookie-consent.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .cookie-content {
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .cookie-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--glow-1);
+        }
+
+        .cookie-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .cookie-button {
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cookie-button.accept {
+            background: var(--gradient-1);
+            color: var(--dark-bg);
+            border: none;
+        }
+
+        .cookie-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-1), var(--glow-1);
+        }
+
+        .cookie-button.accept:hover {
+            background: var(--gradient-3);
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: rgba(22, 22, 26, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem;
+            border-radius: 50%;
+            box-shadow: var(--shadow-1), var(--glow-1);
+            z-index: 999;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8);
+        }
+
+        .music-player.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .music-player:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-1), var(--glow-2);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        .music-player i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: all 0.5s ease;
+        }
+
+        .music-player:hover i {
+            transform: scale(1.1);
+            text-shadow: var(--glow-1);
+        }
+
+        .music-player.playing i {
+            animation: pulse 2s infinite;
+        }
+
+        /* Now Playing Display */
+        .now-playing {
+            position: fixed;
+            bottom: 2rem;
+            left: 5rem;
+            background: rgba(22, 22, 26, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-1), var(--glow-1);
+            z-index: 999;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .now-playing.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .now-playing-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .now-playing-title {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+        }
+
+        .now-playing-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .now-playing-controls button {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .now-playing-controls button:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+            text-shadow: var(--glow-1);
+        }
+
+        .now-playing-controls button i {
+            font-size: 1rem;
+        }
+
+        .now-playing.minimized {
+            transform: translateX(calc(-100% + 50px));
+            width: 50px;
+            padding: 1rem;
+            justify-content: center;
+        }
+
+        .now-playing.minimized .now-playing-content {
+            display: none;
+        }
+
+        .now-playing.minimized::after {
+            content: '\f001';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            position: absolute;
+            right: 1rem;
+        }
+
+        .now-playing.minimized:hover {
+            transform: translateX(0);
+            width: auto;
+            padding: 1rem 2rem;
+        }
+
+        .now-playing.minimized:hover .now-playing-content {
+            display: flex;
+        }
+
+        .now-playing.minimized:hover::after {
+            display: none;
+        }
+
+        /* Volume Control */
+        .volume-control {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .volume-slider {
+            width: 80px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .volume-slider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 2px;
+            width: var(--volume-level, 50%);
+            transition: width 0.3s ease;
+        }
+
+        .volume-slider:hover::before {
+            background: var(--accent-color);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1.5px;
+            overflow: hidden;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 1.5px;
+            width: var(--progress-level, 0%);
+            transition: width 0.1s linear;
+        }
+
+        .progress-bar:hover::before {
+            background: var(--accent-color);
+        }
+
+        /* Track Info */
+        .track-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .track-time {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="scroll-progress"></div>
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Cookie Consent Popup -->
+    <div class="cookie-consent">
+        <div class="cookie-content">
+            <h2 class="cookie-title">Welcome to Our Site</h2>
+            <p class="cookie-text">We use cookies to enhance your experience and play some relaxing background music. Would you like to proceed?</p>
+            <div class="cookie-buttons">
+                <button class="cookie-button accept">Accept & Play Music</button>
+                <button class="cookie-button">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <i class="fas fa-music"></i>
+    </div>
+
+    <!-- Now Playing Display -->
+    <div class="now-playing">
+        <div class="now-playing-content">
+            <div class="track-info">
+                <span class="now-playing-title">Loading...</span>
+                <span class="track-time">0:00 / 0:00</span>
+            </div>
+            <div class="now-playing-controls">
+                <button class="skip-button" title="Skip Track">
+                    <i class="fas fa-forward"></i>
+                </button>
+                <div class="volume-control">
+                    <button class="volume-button" title="Toggle Mute">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="volume-slider"></div>
+                </div>
+                <button class="minimize-button" title="Minimize">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="progress-bar"></div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="background-music" loop>
+        <source src="assets/music/track1.mp3" type="audio/mpeg">
+        <source src="assets/music/track2.mp3" type="audio/mpeg">
+        <source src="assets/music/track3.mp3" type="audio/mpeg">
+        <source src="assets/music/track4.mp3" type="audio/mpeg">
+        <source src="assets/music/track5.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="logo">a.k.a/alok kayang</h1>
+            <p class="subtitle">Where Friendship Meets Adventure</p>
+            <a href="#about" class="cta-button">Join Our Journey</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Story</h2>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <p>Welcome to a.k.a/alok kayang, where friendship is the heart of everything we do. We're not just a group of friends – we're a family that shares laughter, adventures, and unforgettable moments together.</p>
+                    <p>From late-night hangouts to spontaneous road trips, we've created countless memories that define who we are. Our bond goes beyond just hanging out – it's about supporting each other, growing together, and making every moment count.</p>
+                </div>
+                <div class="about-image" data-aos="fade-left"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members Section -->
+    <section id="members" class="members">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">The Squad</h2>
+            <div class="members-grid">
+                <div class="member-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member-avatar">
+                        <img src="assets/members/alan.jpg" alt="Alan">
+                    </div>
+                    <h2 class="member-name">Alan</h2>
+                    <p class="member-role">former</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="member-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-avatar">
+                        <img src="assets/members/agus.jpg" alt="Agus">
+                    </div>
+                    <h2 class="member-name">Agus</h2>
+                    <p class="member-role">2nd former</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="member-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="member-avatar">
+                        <img src="assets/members/tugus.jpg" alt="Tugus">
+                    </div>
+                    <h2 class="member-name">Tugus</h2>
+                    <p class="member-role">creative i think</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="member-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="member-avatar">
+                        <img src="assets/members/nanda.jpg" alt="Nanda">
+                    </div>
+                    <h2 class="member-name">Nanda</h2>
+                    <p class="member-role">thoose sack filled with jokes</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Section -->
+    <section id="memories" class="memories">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Memories</h2>
+            <div class="memories-grid">
+                <div class="memory-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="memory-image">
+                        <img src="https://media.istockphoto.com/id/181928587/photo/an-aerial-view-of-mountain-tops-in-the-fog.jpg?s=612x612&w=0&k=20&c=nNnk1g3k96RlKD6WP1fnmL5i9_eMRgm-UAywM7N-YOU=" alt="Memory 1">
+                    </div>
+                    <div class="memory-content">
+                        <h3 class="memory-title">study tour</h3>
+                        <p class="memory-date">2024</p>
+                        <p class="memory-description">one of the fantastic thing by going to another island</p>
+                    </div>
+                </div>
+
+                <div class="memory-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="memory-image">
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/050/445/089/large/business-team-disagreement-argue-conflict-office-coworking-group-angry-toxic-men-women-female-male-architects-shout-scream-quarrel-misunderstanding-documents-problem-tired-man-colleague-feel-stress-video.jpg" alt="Memory 2">
+                    </div>
+                    <div class="memory-content">
+                        <h3 class="memory-title">stress in exam</h3>
+                        <p class="memory-date">evry exam</p>
+                        <p class="memory-description">Thoose who knew </p>
+                    </div>
+                </div>
+
+                <div class="memory-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="memory-image">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Memory 3">
+                    </div>
+                    <div class="memory-content">
+                        <h3 class="memory-title">visiting old friend</h3>
+                        <p class="memory-date"> 2024</p>
+                        <p class="memory-description">we go meet our sick friend,agus and decided to sstay and have fun</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">a.k.a/alok kayang</div>
+                <div class="footer-links">
+                    <a href="#about">Our Story</a>
+                    <a href="#members">The Squad</a>
+                    <a href="#memories">Memories</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Cookie Consent and Music Player
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieConsent = document.querySelector('.cookie-consent');
+            const musicPlayer = document.querySelector('.music-player');
+            const nowPlaying = document.querySelector('.now-playing');
+            const nowPlayingTitle = document.querySelector('.now-playing-title');
+            const trackTime = document.querySelector('.track-time');
+            const skipButton = document.querySelector('.skip-button');
+            const minimizeButton = document.querySelector('.minimize-button');
+            const volumeButton = document.querySelector('.volume-button');
+            const volumeSlider = document.querySelector('.volume-slider');
+            const progressBar = document.querySelector('.progress-bar');
+            const backgroundMusic = document.getElementById('background-music');
+            const acceptButton = document.querySelector('.cookie-button.accept');
+            const declineButton = document.querySelector('.cookie-button:not(.accept)');
+
+            let currentAudio = null;
+
+            // Array of music tracks with names
+            const musicTracks = [
+                { path: 'assets/music/track1.mp3', name: 'Track 1' },
+                { path: 'assets/music/track2.mp3', name: 'Track 2' },
+                { path: 'assets/music/track3.mp3', name: 'Track 3' },
+                { path: 'assets/music/track4.mp3', name: 'Track 4' },
+                { path: 'assets/music/track5.mp3', name: 'Track 5' }
+            ];
+
+            // Format time
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = Math.floor(seconds % 60);
+                return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+            }
+
+            // Update volume
+            function updateVolume(volume) {
+                if (currentAudio) {
+                    currentAudio.volume = volume;
+                }
+                volumeSlider.style.setProperty('--volume-level', `${volume * 100}%`);
+                volumeButton.querySelector('i').className = volume === 0 ? 'fas fa-volume-mute' : 
+                    volume < 0.5 ? 'fas fa-volume-down' : 'fas fa-volume-up';
+            }
+
+            // Initialize volume
+            updateVolume(0.5);
+
+            // Volume slider interaction
+            volumeSlider.addEventListener('click', (e) => {
+                const rect = volumeSlider.getBoundingClientRect();
+                const volume = (e.clientX - rect.left) / rect.width;
+                updateVolume(volume);
+            });
+
+            // Volume button click
+            volumeButton.addEventListener('click', () => {
+                if (currentAudio && currentAudio.volume > 0) {
+                    updateVolume(0);
+                } else {
+                    updateVolume(0.5);
+                }
+            });
+
+            // Progress bar interaction
+            progressBar.addEventListener('click', (e) => {
+                if (currentAudio) {
+                    const rect = progressBar.getBoundingClientRect();
+                    const progress = (e.clientX - rect.left) / rect.width;
+                    currentAudio.currentTime = progress * currentAudio.duration;
+                }
+            });
+
+            // Function to get random track
+            function getRandomTrack() {
+                const randomIndex = Math.floor(Math.random() * musicTracks.length);
+                return musicTracks[randomIndex];
+            }
+
+            // Function to play next random track
+            function playNextTrack() {
+                const nextTrack = getRandomTrack();
+                console.log('Loading track:', nextTrack.path);
+                
+                // Stop current track if exists
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                }
+                
+                // Update now playing title
+                nowPlayingTitle.textContent = nextTrack.name;
+                
+                // Create new audio element
+                currentAudio = new Audio(nextTrack.path);
+                
+                // Add event listeners for debugging
+                currentAudio.addEventListener('canplaythrough', () => {
+                    console.log('Audio can play through');
+                });
+                
+                currentAudio.addEventListener('error', (e) => {
+                    console.error('Audio error:', e);
+                    showError('Error loading audio file');
+                });
+                
+                currentAudio.addEventListener('playing', () => {
+                    console.log('Audio started playing');
+                });
+
+                // Try to play
+                currentAudio.play()
+                    .then(() => {
+                        console.log('Audio playback started');
+                        backgroundMusic.src = nextTrack.path;
+                        musicPlayer.classList.add('playing');
+                        nowPlaying.classList.add('active');
+                    })
+                    .catch(error => {
+                        console.error('Audio playback failed:', error);
+                        showError('Unable to play audio. Please check your browser settings.');
+                    });
+            }
+
+            // Function to show error message
+            function showError(message) {
+                const errorMessage = document.createElement('div');
+                errorMessage.style.position = 'fixed';
+                errorMessage.style.bottom = '5rem';
+                errorMessage.style.right = '2rem';
+                errorMessage.style.background = 'rgba(22, 22, 26, 0.95)';
+                errorMessage.style.color = '#64ffda';
+                errorMessage.style.padding = '1rem';
+                errorMessage.style.borderRadius = '10px';
+                errorMessage.style.zIndex = '1000';
+                errorMessage.textContent = message;
+                document.body.appendChild(errorMessage);
+                setTimeout(() => errorMessage.remove(), 3000);
+            }
+
+            // Show cookie consent on page load
+            setTimeout(() => {
+                cookieConsent.classList.add('active');
+            }, 1000);
+
+            // Handle accept button click
+            acceptButton.addEventListener('click', () => {
+                cookieConsent.classList.remove('active');
+                musicPlayer.classList.add('active');
+                
+                // Start with a random track
+                playNextTrack();
+            });
+
+            // Handle decline button click
+            declineButton.addEventListener('click', () => {
+                cookieConsent.classList.remove('active');
+            });
+
+            // Toggle music on player click
+            musicPlayer.addEventListener('click', () => {
+                if (currentAudio && currentAudio.paused) {
+                    currentAudio.play();
+                    musicPlayer.classList.add('playing');
+                    nowPlaying.classList.add('active');
+                } else if (currentAudio) {
+                    currentAudio.pause();
+                    musicPlayer.classList.remove('playing');
+                    nowPlaying.classList.remove('active');
+                } else {
+                    playNextTrack();
+                }
+            });
+
+            // Skip to next track
+            skipButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                playNextTrack();
+            });
+
+            // Toggle minimize
+            minimizeButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                nowPlaying.classList.toggle('minimized');
+                minimizeButton.querySelector('i').classList.toggle('fa-chevron-right');
+                minimizeButton.querySelector('i').classList.toggle('fa-chevron-left');
+            });
+
+            // Click on minimized player to expand
+            nowPlaying.addEventListener('click', (e) => {
+                if (nowPlaying.classList.contains('minimized')) {
+                    nowPlaying.classList.remove('minimized');
+                    minimizeButton.querySelector('i').classList.remove('fa-chevron-right');
+                    minimizeButton.querySelector('i').classList.add('fa-chevron-left');
+                }
+            });
+
+            // When track ends, play next random track
+            backgroundMusic.addEventListener('ended', () => {
+                playNextTrack();
+            });
+
+            // Update progress every 100ms
+            setInterval(() => {
+                if (currentAudio) {
+                    const progress = (currentAudio.currentTime / currentAudio.duration) * 100;
+                    progressBar.style.setProperty('--progress-level', `${progress}%`);
+                    trackTime.textContent = `${formatTime(currentAudio.currentTime)} / ${formatTime(currentAudio.duration)}`;
+                }
+            }, 100);
+        });
+
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#64ffda'
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#64ffda',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Back to Top Button
+        const backToTop = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
+
